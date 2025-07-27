@@ -1,4 +1,11 @@
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -19,12 +26,17 @@ export default function Index() {
             <Text style={styles.brandName}>Cooper 1.7</Text>
             <Feather name="chevron-down" size={24} color="black" />
           </View>
-          <View style={{width:55,height:55,borderRadius:50,backgroundColor:"#ebebebff"}}>
-
-          </View>
+          <View
+            style={{
+              width: 55,
+              height: 55,
+              borderRadius: 50,
+              backgroundColor: "#ebebebff",
+            }}
+          ></View>
         </View>
         <View style={styles.second}>
-          <View style={{ backgroundColor: "" }}>
+          <View>
             <Text style={styles.name}>Hello Harsh</Text>
             <Text style={styles.subText}>Make your day easy with us</Text>
           </View>
@@ -44,13 +56,12 @@ export default function Index() {
                 <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 24 }}>
                   Talk with Copper
                 </Text>
-                <Text style={styles.subText}>{"Let's try it now"}</Text>
+                <Text style={styles.subText}>{`Let's try it now`}</Text>
               </View>
             </View>
             <View
               style={{
                 flex: 1,
-                backgroundColor: "",
                 height: 250,
                 justifyContent: "space-between",
               }}
@@ -117,132 +128,183 @@ export default function Index() {
             <Text style={styles.subText}>See All</Text>
           </View>
           {/* list scroll */}
-          <View style={{gap:10}} > 
-
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              paddingVertical: 10,
-              paddingHorizontal: 14,
-              backgroundColor: "#f7f6fefe",
-              borderRadius: 50,
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: 10,
-              }}
+          <SafeAreaView style={{ height: 160 ,paddingTop:10}}>
+            <ScrollView
+              contentContainerStyle={{ gap: 10 }}
+              showsVerticalScrollIndicator={false}
             >
               <View
                 style={{
-                  backgroundColor: "#d7d0fe",
-                  width: 40,
-                  height: 40,
-                  borderRadius: 50,
-                  justifyContent: "center",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
                   alignItems: "center",
+                  paddingVertical: 10,
+                  paddingHorizontal: 14,
+                  backgroundColor: "#f7f6fefe",
+                  borderRadius: 50,
                 }}
               >
-                <Feather name="mic" size={20} color="black" />
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: 10,
+                  }}
+                >
+                  <View
+                    style={{
+                      backgroundColor: "#d7d0fe",
+                      width: 40,
+                      height: 40,
+                      borderRadius: 50,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Feather name="mic" size={20} color="black" />
+                  </View>
+                  <Text style={{ fontSize: 16 }}>What is a wild animal?</Text>
+                </View>
+                <View
+                  style={{ flexDirection: "row", gap: 2, backgroundColor: "" }}
+                >
+                  <Octicons name="dot" size={12} color="black" />
+                  <Octicons name="dot" size={12} color="black" />
+                  <Octicons name="dot" size={12} color="black" />
+                </View>
               </View>
-              <Text style={{ fontSize: 16 }}>What is a wild animal?</Text>
-            </View>
-            <View style={{ flexDirection: "row", gap: 2, backgroundColor: "" }}>
-              <Octicons name="dot" size={12} color="black" />
-              <Octicons name="dot" size={12} color="black" />
-              <Octicons name="dot" size={12} color="black" />
-            </View>
-          </View>
 
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              paddingVertical: 10,
-              paddingHorizontal: 14,
-              backgroundColor: "#f7f6fefe",
-              borderRadius: 50,
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: 10,
-              }}
-            >
               <View
                 style={{
-                  backgroundColor: "#242529",
-                  width: 40,
-                  height: 40,
-                  borderRadius: 50,
-                  justifyContent: "center",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
                   alignItems: "center",
+                  paddingVertical: 10,
+                  paddingHorizontal: 14,
+                  backgroundColor: "#f7f6fefe",
+                  borderRadius: 50,
                 }}
               >
-                  <AntDesign name="scan1" size={22} color="white" />
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: 10,
+                  }}
+                >
+                  <View
+                    style={{
+                      backgroundColor: "#242529",
+                      width: 40,
+                      height: 40,
+                      borderRadius: 50,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <AntDesign name="scan1" size={22} color="white" />
+                  </View>
+                  <Text style={{ fontSize: 16 }}>Scanning images</Text>
+                </View>
+                <View
+                  style={{ flexDirection: "row", gap: 2, backgroundColor: "" }}
+                >
+                  <Octicons name="dot" size={12} color="black" />
+                  <Octicons name="dot" size={12} color="black" />
+                  <Octicons name="dot" size={12} color="black" />
+                </View>
               </View>
-              <Text style={{ fontSize: 16 }}>Scanning images</Text>
-            </View>
-            <View style={{ flexDirection: "row", gap: 2, backgroundColor: "" }}>
-              <Octicons name="dot" size={12} color="black" />
-              <Octicons name="dot" size={12} color="black" />
-              <Octicons name="dot" size={12} color="black" />
-            </View>
-          </View>
 
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              paddingVertical: 10,
-              paddingHorizontal: 14,
-              backgroundColor: "#f7f6fefe",
-              borderRadius: 50,
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: 10,
-              }}
-            >
               <View
                 style={{
-                  backgroundColor: "#f9e8bcff",
-                  width: 40,
-                  height: 40,
-                  borderRadius: 50,
-                  justifyContent: "center",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
                   alignItems: "center",
+                  paddingVertical: 10,
+                  paddingHorizontal: 14,
+                  backgroundColor: "#f7f6fefe",
+                  borderRadius: 50,
                 }}
               >
-                  <Ionicons
-                    name="chatbubbles-outline"
-                    size={24}
-                    color="black"
-                  />              </View>
-              <Text style={{ fontSize: 16 }}>Analysis my dribble shot</Text>
-            </View>
-            <View style={{ flexDirection: "row", gap: 2 }}>
-              <Octicons name="dot" size={12} color="black" />
-              <Octicons name="dot" size={12} color="black" />
-              <Octicons name="dot" size={12} color="black" />
-            </View>
-          </View>
-          </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: 10,
+                  }}
+                >
+                  <View
+                    style={{
+                      backgroundColor: "#f9e8bcff",
+                      width: 40,
+                      height: 40,
+                      borderRadius: 50,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Ionicons
+                      name="chatbubbles-outline"
+                      size={24}
+                      color="black"
+                    />{" "}
+                  </View>
+                  <Text style={{ fontSize: 16 }}>Analysis my dribble shot</Text>
+                </View>
+                <View style={{ flexDirection: "row", gap: 2 }}>
+                  <Octicons name="dot" size={12} color="black" />
+                  <Octicons name="dot" size={12} color="black" />
+                  <Octicons name="dot" size={12} color="black" />
+                </View>
+              </View>
 
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  paddingVertical: 10,
+                  paddingHorizontal: 14,
+                  backgroundColor: "#f7f6fefe",
+                  borderRadius: 50,
+                }}
+              >
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: 10,
+                  }}
+                >
+                  <View
+                    style={{
+                      backgroundColor: "#d7d0fe",
+                      width: 40,
+                      height: 40,
+                      borderRadius: 50,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Feather name="mic" size={20} color="black" />
+                  </View>
+                  <Text style={{ fontSize: 16 }}>What is a wild animal?</Text>
+                </View>
+                <View
+                  style={{ flexDirection: "row", gap: 2, backgroundColor: "" }}
+                >
+                  <Octicons name="dot" size={12} color="black" />
+                  <Octicons name="dot" size={12} color="black" />
+                  <Octicons name="dot" size={12} color="black" />
+                </View>
+              </View>
+
+            </ScrollView>
+          </SafeAreaView>
         </View>
       </SafeAreaView>
     </View>
@@ -272,9 +334,9 @@ const styles = StyleSheet.create({
   // edededff
   mainSection: {
     width: "95%",
-    flexDirection:"row",
-    justifyContent:"space-between",
-    alignItems:"center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     // backgroundColor:"orange"
   },
   brandingSection: {

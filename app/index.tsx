@@ -9,7 +9,9 @@ import {
 import Feather from "@expo/vector-icons/Feather";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import Octicons from "@expo/vector-icons/Octicons";
+import data from '../component/Data';
+import SearchCard from "@/component/SearchCard";
+import { router } from "expo-router";
 
 export default function Index() {
   return (
@@ -21,9 +23,9 @@ export default function Index() {
       />
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.mainSection}>
-          <View style={styles.brandingSection}>
+          <View style={styles.brandingSection} >
             <View style={styles.logo}></View>
-            <Text style={styles.brandName}>Cooper 1.7</Text>
+            <Text style={styles.brandName} onPress={()=>router.push('/(tabs)/Subcription')}>Cooper 1.7</Text>
             <Feather name="chevron-down" size={24} color="black" />
           </View>
           <View
@@ -133,175 +135,14 @@ export default function Index() {
               contentContainerStyle={{ gap: 10 }}
               showsVerticalScrollIndicator={false}
             >
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  paddingVertical: 10,
-                  paddingHorizontal: 14,
-                  backgroundColor: "#f7f6fefe",
-                  borderRadius: 50,
-                }}
-              >
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: 10,
-                  }}
-                >
-                  <View
-                    style={{
-                      backgroundColor: "#d7d0fe",
-                      width: 40,
-                      height: 40,
-                      borderRadius: 50,
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Feather name="mic" size={20} color="black" />
-                  </View>
-                  <Text style={{ fontSize: 16 }}>What is a wild animal?</Text>
-                </View>
-                <View
-                  style={{ flexDirection: "row", gap: 2, backgroundColor: "" }}
-                >
-                  <Octicons name="dot" size={12} color="black" />
-                  <Octicons name="dot" size={12} color="black" />
-                  <Octicons name="dot" size={12} color="black" />
-                </View>
-              </View>
 
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  paddingVertical: 10,
-                  paddingHorizontal: 14,
-                  backgroundColor: "#f7f6fefe",
-                  borderRadius: 50,
-                }}
-              >
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: 10,
-                  }}
-                >
-                  <View
-                    style={{
-                      backgroundColor: "#242529",
-                      width: 40,
-                      height: 40,
-                      borderRadius: 50,
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <AntDesign name="scan1" size={22} color="white" />
-                  </View>
-                  <Text style={{ fontSize: 16 }}>Scanning images</Text>
-                </View>
-                <View
-                  style={{ flexDirection: "row", gap: 2, backgroundColor: "" }}
-                >
-                  <Octicons name="dot" size={12} color="black" />
-                  <Octicons name="dot" size={12} color="black" />
-                  <Octicons name="dot" size={12} color="black" />
-                </View>
-              </View>
+              {
+                data.map((data,index)=>(
+                  <SearchCard key={index} text={data.text} circleBgColor={data.color} icon={data.icon}>
 
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  paddingVertical: 10,
-                  paddingHorizontal: 14,
-                  backgroundColor: "#f7f6fefe",
-                  borderRadius: 50,
-                }}
-              >
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: 10,
-                  }}
-                >
-                  <View
-                    style={{
-                      backgroundColor: "#f9e8bcff",
-                      width: 40,
-                      height: 40,
-                      borderRadius: 50,
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Ionicons
-                      name="chatbubbles-outline"
-                      size={24}
-                      color="black"
-                    />{" "}
-                  </View>
-                  <Text style={{ fontSize: 16 }}>Analysis my dribble shot</Text>
-                </View>
-                <View style={{ flexDirection: "row", gap: 2 }}>
-                  <Octicons name="dot" size={12} color="black" />
-                  <Octicons name="dot" size={12} color="black" />
-                  <Octicons name="dot" size={12} color="black" />
-                </View>
-              </View>
-
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  paddingVertical: 10,
-                  paddingHorizontal: 14,
-                  backgroundColor: "#f7f6fefe",
-                  borderRadius: 50,
-                }}
-              >
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: 10,
-                  }}
-                >
-                  <View
-                    style={{
-                      backgroundColor: "#d7d0fe",
-                      width: 40,
-                      height: 40,
-                      borderRadius: 50,
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Feather name="mic" size={20} color="black" />
-                  </View>
-                  <Text style={{ fontSize: 16 }}>What is a wild animal?</Text>
-                </View>
-                <View
-                  style={{ flexDirection: "row", gap: 2, backgroundColor: "" }}
-                >
-                  <Octicons name="dot" size={12} color="black" />
-                  <Octicons name="dot" size={12} color="black" />
-                  <Octicons name="dot" size={12} color="black" />
-                </View>
-              </View>
+                  </SearchCard>
+                ))
+              }
 
             </ScrollView>
           </SafeAreaView>

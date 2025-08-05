@@ -29,7 +29,7 @@ const TypingDots = () => {
     animateDot(dot1, 0);
     animateDot(dot2, 150);
     animateDot(dot3, 300);
-  }, []);
+  }, [dot1,dot2,dot3]);
 
   return (
     <View style={styles.container}>

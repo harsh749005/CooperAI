@@ -86,7 +86,7 @@ export default function Index() {
                     color="black"
                   />
                 </View>
-                <Text style={{ fontFamily: "Poppins-Medium", fontSize: 20 }}>
+                <Text onPress={()=>router.push('/(tabs)/Chat')} style={{ fontFamily: "Poppins-Medium", fontSize: 20 }}>
                   New chat
                 </Text>
               </View>

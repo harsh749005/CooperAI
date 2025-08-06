@@ -10,30 +10,38 @@ import {
   ScrollView,
 } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
-import Entypo from '@expo/vector-icons/Entypo';
+import Entypo from "@expo/vector-icons/Entypo";
 import { getPerplexityResponse } from "../../api/perplexity";
-import {callOpenAIApi} from '../../api/gpt'
-import {callGeminiAPI} from '../../api/gemini'
-import TypingDots from '../../animation/TypingDots'
+import { callOpenAIApi } from "../../api/gpt";
+import { callGeminiAPI } from "../../api/gemini";
+import TypingDots from "../../animation/TypingDots";
 const Chat = () => {
   const [input, setInput] = useState({
     text: "",
     sender: "user",
-    date: Date.now(),
+    date: new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    }),
   });
 
   const [chatmsg, setChatmsg] = useState([]);
-  const [loding,setLoding] = useState(false);
+  const [loding, setLoding] = useState(false);
   const scrollViewRef = useRef(null);
 
   const handleChat = async () => {
     if (input.text.trim() === "") return;
-      setLoding(true);
+    setLoding(true);
 
     // 1. Add user's message
     const userMessage = {
       ...input,
-      date: Date.now(),
+      time: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      }),
     };
     setChatmsg((prev) => [...prev, userMessage]);
 
@@ -41,15 +49,19 @@ const Chat = () => {
     setInput({
       text: "",
       sender: "user",
-      date: Date.now(),
+      time: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      }),
     });
     const typingMessage = {
-      text:"Typing ...",
-      sender:"bot",
-      date:Date.now(),
-      isTyping:true
-    }
-    setChatmsg((prev)=>[...prev,typingMessage]);
+      text: "Typing ...",
+      sender: "bot",
+      time: Date.now(),
+      isTyping: true,
+    };
+    setChatmsg((prev) => [...prev, typingMessage]);
 
     // 3. Get response from API
     try {
@@ -58,27 +70,30 @@ const Chat = () => {
       const botMessage = {
         text: reply,
         sender: "bot",
-        date: Date.now(),
+        time: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true,
+        }),
       };
 
       // 4. Add bot's reply
-      setTimeout(()=>{
-
-        setChatmsg((prev)=>{
+      setTimeout(() => {
+        setChatmsg((prev) => {
           const updated = [...prev];
           const typingIndex = updated.findIndex(
-            (msg) => msg.isTyping && msg.sender === 'bot'
+            (msg) => msg.isTyping && msg.sender === "bot"
           );
-          if(typingIndex !== -1){
+          if (typingIndex !== -1) {
             updated[typingIndex] = botMessage;
-          }else{
+          } else {
             updated.push(botMessage);
           }
           return updated;
-        })
+        });
         // setChatmsg((prev) => [...prev, botMessage]);
         setLoding(false);
-      },2000)
+      }, 2000);
     } catch (err) {
       console.error(err);
       setLoding(false);
@@ -109,30 +124,57 @@ const Chat = () => {
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
         >
-          {chatmsg.map((chat, index) => (
+          {chatmsg.length === 0 ? (
             <View
-              key={index}
               style={{
-                alignSelf: chat.sender === "user" ? "flex-end" : "flex-start",
-                backgroundColor: chat.sender === "user" ?"#242529":"white",
-                padding: 10,
-                borderRadius: 10,
-                marginBottom: 10,
-                maxWidth: "80%",
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
-              {
-                chat.isTyping ? (
-                  <TypingDots />
-
-                ):
-                (
-
-                  <Text style={{ color: chat.sender === "user" ?"white":"#242529", fontStyle: chat.isTyping ? 'italic' : 'normal'  }}>{chat.text}</Text>
-                )
-              }
+              <Text>Ask your Questions.</Text>
             </View>
-          ))}
+          ) : (
+            chatmsg.map((chat, index) => (
+              <View
+                key={index}
+                style={{
+                  alignSelf: chat.sender === "user" ? "flex-end" : "flex-start",
+                  backgroundColor: chat.sender === "user" ? "#242529" : "white",
+                  padding: 10,
+                  borderRadius: 10,
+                  marginBottom: 10,
+                  maxWidth: "80%",
+                }}
+              >
+                {chat.isTyping ? (
+                  <TypingDots />
+                ) : (
+                  <View >
+                    <Text
+                      style={{
+                        color: chat.sender === "user" ? "white" : "#242529",
+                        fontStyle: chat.isTyping ? "italic" : "normal",
+                      }}
+                    >
+                      {chat.text }
+                    </Text>
+                    <Text
+                      style={{
+                        fontSize:10,
+                        textAlign:"right",
+                        marginTop:5,
+                        color: chat.sender === "user" ? "white" : "#242529",
+                        fontStyle: chat.isTyping ? "italic" : "normal",
+                      }}
+                    >
+                      {chat.time}
+                    </Text>
+                  </View>
+                )}
+              </View>
+            ))
+          )}
 
           {/* Input Section */}
           <View
@@ -175,13 +217,11 @@ const Chat = () => {
               }}
               onPress={handleChat}
             >
-              {
-                loding ? 
-
+              {loding ? (
                 <Entypo name="controller-stop" size={24} color="white" />
-                :
+              ) : (
                 <Feather name="send" size={24} color="white" />
-              }
+              )}
             </Pressable>
           </View>
         </ScrollView>

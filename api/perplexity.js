@@ -1,7 +1,4 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
-const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY;
+const PERPLEXITY_API_KEY = process.env.EXPO_PUBLIC_PERPLEXITY_API_KEY;
 
 export const getPerplexityResponse = async (message) => {
   try {
